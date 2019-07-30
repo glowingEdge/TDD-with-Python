@@ -1,6 +1,6 @@
 # -TDD-with-Python
 클린 코드를 위한 테스트 주도 개발
-
+HTML 버전은 무료로 업데이트하고 있다. 한글판과 소스 코드 차이점을 참고할 때에 1차적으로는 <a href=https://www.obeythetestinggoat.com/pages/book.html#toc>여기</a>를 참고하고, 그 외 변경사항들을 아래 정리.
 ## 책과 다른 부분
 
 ### 개발 환경
