@@ -1,9 +1,10 @@
+from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import unittest
 
 
-class NweVisitorTest(unittest.TestCase):
+
+class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Chrome("C:\\Users\\ddukf\\source\\TDD-Python\\chromedriver_win32\\chromedriver.exe")
@@ -20,7 +21,7 @@ class NweVisitorTest(unittest.TestCase):
     def test_can_start_a_list_and_retrieve_it_later(self):
         # 에디스는 멋진 작업 목록 온라인 앱이 나왔다는 소식을 듣고
         # 해당 웹 사이트를 확인하러 간다
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
 
         # 웹 페이지 타이틀과 헤더가 'To-Do'를 표시하고 있다
         self.assertIn('To-Do', self.browser.title)
@@ -61,7 +62,3 @@ class NweVisitorTest(unittest.TestCase):
         # 해당 URL에 접속하면 그녀가 만든 작업 목록이 그대로 있는 것을 확인할 수 있다
 
         # 만족하고 잠자리에 든다
-
-
-if __name__ == '__main__':
-    unittest.main()
