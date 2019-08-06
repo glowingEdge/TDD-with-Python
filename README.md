@@ -35,3 +35,20 @@ url pattern 변경점도 참고한다. <a href=https://blog.illustudio.co.kr/201
     url(r'^$', 'lists.views.home_page', name='home')
     -> path('', liists.views.home_page, name='home')
 
+
+#### Chapter 6
+#### p. 116
+    class Item(models.Model):
+        text = models.TextField(default='')
+        list = models.ForeignKey(List, default=None)
+
+위와 같이 ForeignKey 설정 후 makemigrations 실행 시, 아래와 같은 에러가 발생한다.
+
+    ...
+    TypeError: __init__() missing 1 required positional argument: 'on_delete'
+
+어떤 오류인지 감이 오는데, 책에선 아무렇지 않게 넘어갔다. 어느 버전인지는 모르겠지만 Django에서 필수로 지정한듯 하다. 다음과 같이 수정한다.
+
+     class Item(models.Model):
+        text = models.TextField(default='')
+        list = models.ForeignKey(List, on_delete=models.SET_DEFAULT, default=None)
