@@ -52,3 +52,25 @@ url pattern 변경점도 참고한다. <a href=https://blog.illustudio.co.kr/201
      class Item(models.Model):
         text = models.TextField(default='')
         list = models.ForeignKey(List, on_delete=models.SET_DEFAULT, default=None)
+
+#### p.119
+책이 쓰여질 때와 url pattern을 작성하는 법이 변경됐기 때문에 아래와 같이 url을 사용한다.<br>
+(' path '는 ' .+ ' 를 대신하기 위해서 사용했지만, 실제로는 ' int ' 써야할 것이다.) <br>
+  <a href="https://consideratecode.com/2018/05/02/django-2-0-url-to-path-cheatsheet"/>path()사용에 관한 좋은 글</a>
+
+-책 코드
+
+    urlpatterns = [
+        url(r'^$', views.home_page, name='home'),
+        url(r'^lists/new$', views.new_list, name='new_list'),
+        url(r'^lists/(.+)/$', views.view_list, name='view_list'),
+    ]
+
+-변경한 코드
+
+    urlpatterns = [
+    path('', views.home_page, name='home'),
+    path('lists/<path:list_id>/', views.view_list, name='view_list'),
+    path('lists/new', views.new_list, name='new_list'),
+    path('admin/', admin.site.urls),
+]

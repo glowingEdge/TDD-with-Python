@@ -107,8 +107,7 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertNotEqual(francis_list_url, edith_list_url)
 
         # Again, there is no trace of Edith's list
-        page_text = self.browser.find_elements_by_tag_name('body').text
+        page_text = self.browser.find_element_by_tag_name('body').text
         self.assertNotIn('공작깃털 사기', page_text)
-        self.assertNotIn('그물 만들기', page_text)
-
+        self.assertIn('우유 사기', page_text)
         # Satisfied, they both go back to sleep
