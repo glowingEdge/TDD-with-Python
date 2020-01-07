@@ -3,6 +3,13 @@
 HTML 버전은 무료로 업데이트하고 있다. 한글판과 소스 코드 차이점을 참고할 때에 1차적으로는 <a href=https://www.obeythetestinggoat.com/pages/book.html#toc>여기</a>를 참고하고, 그 외 변경사항들을 아래 정리.<br>
 (+추가) 책의 8장, 온라인 버전의 9장부터는 서로 다른 점도 쌓이고, 그나마 최신의 코드들을 참고할 수 있는 온라인 버전으로 진행하는게 더 편했다.(비록 영어임에도)
 
+## 사용 환경
+DEV: Django 2.1.11
+SERVER: AWS EC2 (ubuntu 18.04)
+DNS: freenom.com
+TEST: python unittest, selenium
+DEPLOY: nginx, fabric
+
 ## 책과 다른 부분
 
 ### 개발 환경
