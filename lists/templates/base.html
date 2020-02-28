@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <div class="row">
-                <div class="col-md-12 col-md-offset-3 jumbotron">
+                <div class="col-md-12 col-md-offset-0 jumbotron">
                     <div class="text-center">
                         <h1>{% block header_text %}{% endblock %}</h1>
                         <form method="POST" action="{% block form_action %}{% endblock %}">
@@ -17,6 +17,11 @@
                                    class="form-control input-lg"
                                    placeholder="작업 아이템 입력" />
                             {% csrf_token %}
+                            {% if error %}
+                                <div class="form-group has-error alert-danger">
+                                    <span class="help-block">{{error}}</span>
+                                </div>
+                            {% endif %}
                         </form>
                     </div>
                 </div>
