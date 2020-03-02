@@ -16,10 +16,10 @@ class NewVisitorTest(FunctionalTest):
         self.assertIn('To-Do', header_text)
 
         # 그녀는 바로 작업을 추가하기로 한다
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox = self.get_item_input_box()
         self.assertEqual(
             inputbox.get_attribute('placeholder'),
-            '작업 아이템 입력'
+            'Enter a to-do item'
         )
 
         # "공작깃털 사기"라고 텍스트 상자에 입력한다
@@ -33,7 +33,7 @@ class NewVisitorTest(FunctionalTest):
 
         # 추가 아이템을 입력할 수 있는 여분의 텍스트 상자가 존재한다
         # 다시 "공작깃털을 이용해서 그물 만들기"라고 입력한다(에디스는 매우 체계적인 사람이다)
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox = self.get_item_input_box()
         inputbox.send_keys('공작깃털을 이용해서 그물 만들기')
         inputbox.send_keys(Keys.ENTER)
 
@@ -46,7 +46,7 @@ class NewVisitorTest(FunctionalTest):
     def test_multiple_users_can_start_lists_at_different_urls(self):
         # Edith starts a new to-do list
         self.browser.get(self.live_server_url)
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox = self.get_item_input_box()
         inputbox.send_keys('공작깃털 사기')
         inputbox.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table('1: 공작깃털 사기')
@@ -73,7 +73,7 @@ class NewVisitorTest(FunctionalTest):
 
         # Francis starts a new list by entering a new item.
         # He is less interesting than Edith...
-        inputbox = self.browser.find_element_by_id('id_new_item')
+        inputbox = self.get_item_input_box()
         inputbox.send_keys('우유 사기')
         inputbox.send_keys(Keys.ENTER)
         self.wait_for_row_in_list_table('1: 우유 사기')
