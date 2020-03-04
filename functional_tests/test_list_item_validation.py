@@ -6,7 +6,7 @@ from .base import FunctionalTest
 class ItemValidationTest(FunctionalTest):
 
     def get_error_element(self):
-        return self.browser.find_element_by_css_selector('has-error')
+        return self.browser.find_element_by_css_selector('.has-error')
 
     def test_cannot_add_empty_list_item(self):
         # Edith goes to the home page and accidentally tries to submit
@@ -76,11 +76,10 @@ class ItemValidationTest(FunctionalTest):
             self.get_error_element().is_displayed()
         ))
 
-        # She starts typing in the inpur box to clear the error
+        # She starts typing in the input box to clear the error
         self.get_item_input_box().send_keys('a')
 
         # She is pleased to see that the error message disappears
-        self.wait_for(lambda: self.assertEqual(
+        self.wait_for(lambda: self.assertFalse(
             self.get_error_element().is_displayed()
         ))
-
